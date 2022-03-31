@@ -1,8 +1,8 @@
 
 
-const HelloWorld = artifacts.require("HelloWorld");
+const ConstructorDemo = artifacts.require("ConstructorDemo");
 
 module.exports = function (deployer) {
-  deployer.deploy(HelloWorld);
+  deployer.deploy(ConstructorDemo);
 };
 
