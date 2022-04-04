@@ -20,7 +20,35 @@ pragma solidity ^0.8.7;
                             execute code on B's state variables
                             use ETH in B
   */
+contract TestDelegateCall {
+        // state variables
+        address public owner;
+        uint public num;
+        address public sender;
+        uint public value;
+
+        function setVars(uint _num) external payable {
+                // num = _num;
+                num = 2 * _num;
+                sender = msg.sender;
+                value = msg.value;
+        }
+}
 
 contract DelegateCall {
+        // order of the state varibles must be same between both the contracts.
+        // If we add (or) dis-order, we will have an issue
+        uint public num;
+        address public sender;
+        uint public value;
 
+        function setVars(address _test, uint _num) external payable {
+                // _test.delegatecall(abi.encodeWithSignature("setVars(uint256)", _num));
+
+                // This is another way to delegatecall()
+                (bool success, bytes memory data) = _test.delegatecall(
+                        abi.encodeWithSelector(TestDelegateCall.setVars.selector, _num)
+                );
+                require(success, "delagatecall failed");
+        }
 }
