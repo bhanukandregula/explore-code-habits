@@ -1,8 +1,8 @@
 
 
-const ConstructorDemo = artifacts.require("ConstructorDemo");
+const TodoList = artifacts.require("TodoList");
 
 module.exports = function (deployer) {
-  deployer.deploy(ConstructorDemo);
+  deployer.deploy(TodoList);
 };
 
