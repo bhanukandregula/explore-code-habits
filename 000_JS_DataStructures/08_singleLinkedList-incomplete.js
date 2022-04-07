@@ -17,7 +17,8 @@ function Node(element){
 
 function find(item){
     var currentNode = this.head;
-    while(currentNode.element != item){ // element is not visible when compile, this issue has to be resolved.
+    // element is not visible when compile, this issue has to be resolved.
+    while(currentNode.element != item){ 
         currentNode = currentNode.next;
     }
     return currentNode;
@@ -27,7 +28,7 @@ function insert( newElement,item){
     var newNode = new Node(newElement);
     var current = this.find(item);
     newNode.next = current.next;
-    current.next = newNode; 
+    currentNode = currentNode.next;
 }
 
 function remove(){
@@ -44,7 +45,7 @@ function display(){
 
 var cities = new LList();
 cities.insert("Delhi", "head");
-cities.insert("Visakhapatnam", "Conway");
+cities.insert("Visakhapatnam", "Anakapalli");
 cities.insert("Michigan", "Novi");
 console.log(cities);
 console.log("These are the cities in Linked List: ", JSON.stringify(cities));
