@@ -11,7 +11,7 @@
 
 // This is Initialization of Hash Table
 function HashTable(){
-    this.table = new Array(137); // pre defined array length
+    this.table = new Array(137); // 137 was declared to abvoid any collisions
     this.simpleHash = simpleHash;
     this.showDistro = showDistro;
     this.put = put;
@@ -29,3 +29,78 @@ function put(data){
     var pos = this.simpleHash(data);
     this.table[pos] = data;
 }
+
+// to show the basic distrubution of hashing functioinality
+// (key - value pairs)
+function showDistro(){
+    var n = 0;
+    for(var i=0; i<this.table.length; i++){
+        if(this.table[i] != undefined){
+            console.log(i+ " : " + this.table[i]);
+        }
+    }
+}
+
+var  someNames = ["Bhanu", "Raghu", "Mike", "Hike", "Manu", "Hanu"];
+console.log(someNames);
+
+var hTable = new HashTable(); // Initialize hash table
+for(var i=0; i<someNames.length; i++){
+    hTable.put(someNames[i]);
+}
+
+hTable.showDistro();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
